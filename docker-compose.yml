@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  api:
+    build: .
+    container_name: khetbuddy-api
+    ports:
+      - "8000:8000"
+    environment:
+      - APP_NAME=KhetBuddy Yield Prediction API
+      - DEBUG=True
+      - OPENWEATHER_API_KEY=${OPENWEATHER_API_KEY}
+    volumes:
+      - ./models:/app/models
+      - ./app:/app/app
+    restart: unless-stopped
