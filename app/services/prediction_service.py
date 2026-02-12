@@ -29,8 +29,8 @@ class PredictionService:
         Load trained ML model and encoders
         Falls back to placeholder logic if model files don't exist
         """
-        model_path = Path(settings.model_path)
-        encoders_path = Path(settings.encoders_path)
+        model_path = Path(settings.ml_model_path)
+        encoders_path = Path(settings.ml_encoders_path)
         
         if model_path.exists() and encoders_path.exists():
             try:
