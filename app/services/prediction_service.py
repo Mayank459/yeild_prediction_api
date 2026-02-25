@@ -9,7 +9,7 @@ import numpy as np
 from pathlib import Path
 from typing import Dict, Optional
 from app.config import settings
-from app.constants import CROPS, SEASONS, PUNJAB_DISTRICTS, IRRIGATION_TYPES
+from app.constants import CROPS, SEASONS, IRRIGATION_TYPES
 from app.models.prediction import YieldRange
 from app.utils.feature_engineering import prepare_features, encode_categorical
 from app.utils.logger import logger
@@ -69,7 +69,8 @@ class PredictionService:
             features_encoded = features.copy()
             features_encoded['crop_type'] = encode_categorical(features['crop_type'], CROPS)
             features_encoded['season'] = encode_categorical(features['season'], SEASONS)
-            features_encoded['district'] = encode_categorical(features['district'], PUNJAB_DISTRICTS)
+            # district comes from reverse geocoding — encode via stable hash (no fixed list needed)
+            features_encoded['district'] = abs(hash(features.get('district', ''))) % 1000
             features_encoded['irrigation_type'] = encode_categorical(features['irrigation_type'], IRRIGATION_TYPES)
             
             # Prepare feature vector (order should match training)

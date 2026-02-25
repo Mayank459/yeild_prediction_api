@@ -1,7 +1,8 @@
 {
+    "latitude": 30.9010,
+    "longitude": 75.8573,
     "crop_type": "Wheat",
     "season": "Rabi",
-    "district": "Ludhiana",
     "nitrogen": 80,
     "phosphorus": 40,
     "potassium": 40,
