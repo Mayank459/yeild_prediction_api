@@ -1,271 +1,434 @@
 # 🌾 KhetBuddy Yield Prediction API
 
-A FastAPI-based ML system for predicting crop yields in Punjab, India. Built strictly for **ML-only scope** as defined in the project plans.
+A FastAPI-based ML system for predicting crop yields in Punjab, India.  
+Farmers only need to provide **GPS coordinates + crop type + irrigation type** — everything else is auto-fetched.
+
+[![Python](https://img.shields.io/badge/Python-3.11+-blue)](https://python.org)
+[![FastAPI](https://img.shields.io/badge/FastAPI-0.100+-green)](https://fastapi.tiangolo.com)
+[![Docker](https://img.shields.io/badge/Docker-supported-blue)](https://docker.com)
+[![License](https://img.shields.io/badge/Data-Public%20%26%20Free-brightgreen)](#-data-sources)
+
+---
 
 ## 📋 Overview
 
-This API predicts crop yield (quintal/hectare) based on:
-- **Soil parameters**: Nitrogen, Phosphorus, Potassium, pH, moisture
-- **Crop type**: Wheat, Rice, Maize, Cotton
-- **Season**: Rabi, Kharif
-- **District**: Punjab districts
-- **Weather**: Real-time data from OpenWeatherMap API
+KhetBuddy predicts crop yield (quintal/hectare) for Punjab farmers. The API is designed to be **mobile-friendly** — a farmer's phone sends GPS coordinates and the API does the rest automatically.
 
-## 🎯 Scope
+### Auto-Fetched from GPS
+| Parameter | Source |
+|-----------|--------|
+| **District & State** | Nominatim reverse geocoding (OpenStreetMap) |
+| **Season** | Auto-detected from current calendar month |
+| **Soil N, pH** | SoilGrids API (ISRIC) — free, no key |
+| **Soil P, K** | Punjab district averages (Soil Health Cards) |
+| **Soil Moisture** | Estimated from weather humidity + rainfall |
+| **Temperature, Humidity, Rainfall** | OpenWeatherMap (free tier) |
 
-**ML-Only Features:**
-- ✅ Yield prediction pipeline
-- ✅ Feature engineering (nutrient index, rainfall categories, stress indicators)
-- ✅ Weather API integration (OpenWeatherMap)
-- ✅ REST API endpoints
-- ✅ Docker support
+### Supported Crops & Seasons
+| Crop | Typical Season |
+|------|---------------|
+| Wheat | Rabi (Oct–Mar) |
+| Rice | Kharif (Apr–Sep) |
+| Maize | Kharif (Apr–Sep) |
+| Cotton | Kharif (Apr–Sep) |
 
-**Out of Scope:**
-- ❌ Authentication/Authorization
-- ❌ Database integration
-- ❌ Recommendation systems
-- ❌ Irrigation/fertilizer optimization
-- ❌ Disease detection
+---
 
 ## 🚀 Quick Start
 
 ### Prerequisites
 - Python 3.11+
-- OpenWeatherMap API key (free tier: https://openweathermap.org/api)
+- OpenWeatherMap API key ([free tier](https://openweathermap.org/api))
 
 ### Local Setup
 
-1. **Clone and navigate to project**
-   ```bash
-   cd d:\API\khetBuddy
-   ```
+```bash
+# 1. Clone the repository
+git clone https://github.com/your-username/khetBuddy.git
+cd khetBuddy
 
-2. **Create virtual environment**
-   ```bash
-   python -m venv venv
-   venv\Scripts\activate  # Windows
-   ```
+# 2. Create and activate virtual environment
+python -m venv venv
+venv\Scripts\activate        # Windows
+# source venv/bin/activate   # Linux/macOS
 
-3. **Install dependencies**
-   ```bash
-   pip install -r requirements.txt
-   ```
+# 3. Install dependencies
+pip install -r requirements.txt
 
-4. **Configure environment**
-   ```bash
-   copy .env.example .env
-   # Edit .env and add your OpenWeatherMap API key
-   ```
+# 4. Configure environment
+copy .env.example .env
+# Open .env and set your OpenWeatherMap API key
 
-5. **Run the API**
-   ```bash
-   python main.py
-   ```
+# 5. Run the API
+python main.py
+```
 
-   API will be available at: http://localhost:8000
+API available at: **http://localhost:8000**  
+Interactive docs: **http://localhost:8000/docs**
 
 ### Docker Setup
 
-1. **Set environment variables**
-   ```bash
-   # Create .env file with your API key
-   echo OPENWEATHER_API_KEY=your_key_here > .env
-   ```
+```bash
+# Set your API key
+echo OPENWEATHER_API_KEY=your_key_here > .env
 
-2. **Build and run**
-   ```bash
-   docker-compose up --build
-   ```
+# Build and run
+docker-compose up --build
+```
 
-   API will be available at: http://localhost:8000
+---
 
-## 📚 API Documentation
+## 📚 API Reference
 
-### Interactive Docs
-- Swagger UI: http://localhost:8000/docs
-- ReDoc: http://localhost:8000/redoc
+> Interactive Swagger UI: `http://localhost:8000/docs`  
+> ReDoc: `http://localhost:8000/redoc`
 
-### Endpoints
+### Endpoints Summary
 
-#### 1. Predict Yield
-**POST** `/api/predict`
+| Method | Path | Description |
+|--------|------|-------------|
+| `POST` | `/api/predict` | Predict crop yield |
+| `GET` | `/api/crops` | List supported crops |
+| `GET` | `/api/seasons` | List seasons + auto-detected current season |
+| `GET` | `/api/irrigation-types` | List irrigation types |
+| `POST` | `/api/geocode` | Reverse geocode GPS → district + soil defaults |
+| `GET` | `/health` | API health check |
+| `GET` | `/` | Root info |
 
-Predicts crop yield based on input features.
+---
 
-**Request Body:**
+### `POST /api/predict`
+
+Predicts crop yield. Only **4 fields are required** — everything else is auto-fetched.
+
+#### Request Body
+
+| Field | Type | Required | Constraints | Auto-Fetched From |
+|-------|------|----------|-------------|-------------------|
+| `latitude` | float | ✅ | −90 to 90 | — |
+| `longitude` | float | ✅ | −180 to 180 | — |
+| `crop_type` | string | ✅ | `Wheat` / `Rice` / `Maize` / `Cotton` | — |
+| `irrigation_type` | string | ✅ | `Canal` / `Borewell` / `Rainfed` | — |
+| `season` | string | ❌ | `Rabi` / `Kharif` | Calendar month |
+| `nitrogen` | float | ❌ | ≥ 0, kg/ha | SoilGrids API |
+| `phosphorus` | float | ❌ | ≥ 0, kg/ha | Punjab district avg |
+| `potassium` | float | ❌ | ≥ 0, kg/ha | Punjab district avg |
+| `soil_ph` | float | ❌ | 0 – 14 | SoilGrids API |
+| `soil_moisture` | float | ❌ | 0 – 100 % | Estimated from weather |
+| `avg_temperature` | float | ❌ | °C | OpenWeatherMap |
+| `total_rainfall` | float | ❌ | mm | OpenWeatherMap |
+| `humidity` | float | ❌ | 0 – 100 % | OpenWeatherMap |
+
+#### Minimal Request (just GPS + crop)
+
 ```json
 {
+  "latitude": 30.9010,
+  "longitude": 75.8573,
   "crop_type": "Wheat",
+  "irrigation_type": "Canal"
+}
+```
+
+#### Full Request (all overrides provided)
+
+```json
+{
+  "latitude": 30.9010,
+  "longitude": 75.8573,
+  "crop_type": "Wheat",
+  "irrigation_type": "Canal",
   "season": "Rabi",
-  "district": "Ludhiana",
   "nitrogen": 80,
   "phosphorus": 40,
   "potassium": 40,
   "soil_ph": 7.0,
   "soil_moisture": 25,
-  "irrigation_type": "Canal",
   "avg_temperature": 20.5,
   "total_rainfall": 450,
   "humidity": 65
 }
 ```
 
-**Response:**
+#### Response `200 OK`
+
 ```json
 {
   "crop_type": "Wheat",
-  "district": "Ludhiana",
   "season": "Rabi",
+  "location": {
+    "district": "Ludhiana",
+    "state": "Punjab",
+    "latitude": 30.9010,
+    "longitude": 75.8573
+  },
+  "soil": {
+    "nitrogen": 220.0,
+    "phosphorus": 21.0,
+    "potassium": 142.0,
+    "soil_ph": 7.7,
+    "soil_moisture": 29.0,
+    "source": "auto"
+  },
   "yield_per_hectare": {
     "lower": 48.2,
     "expected": 52.4,
     "higher": 56.7
   },
   "unit": "quintal/hectare",
-  "confidence_note": "Prediction based on soil, weather, and historical data"
+  "confidence_note": "Prediction based on GPS location, soil, and weather data"
 }
 ```
 
-#### 2. Get Crops
-**GET** `/api/crops`
+> `soil.source` is `"auto"` when values were fetched automatically, or `"user_provided"` when all soil fields were manually supplied.
 
-Returns list of supported crops.
+#### Error Responses
 
-#### 3. Get Districts
-**GET** `/api/districts`
+```json
+// 400 — Invalid crop_type
+{ "detail": "Invalid crop_type. Choose from: Wheat, Rice, Maize, Cotton" }
 
-Returns list of Punjab districts.
+// 400 — Invalid irrigation_type
+{ "detail": "Invalid irrigation_type. Choose from: Canal, Borewell, Rainfed" }
 
-#### 4. Get Seasons
-**GET** `/api/seasons`
+// 400 — Coordinates outside India
+{ "detail": "Coordinates are outside India. This API supports India only." }
 
-Returns crop seasons and crop-season mapping.
+// 500 — Internal server error
+{ "detail": "Prediction failed: <error message>" }
+```
 
-#### 5. Health Check
-**GET** `/health`
+---
 
-API health status.
+### `GET /api/crops`
+
+#### Response `200 OK`
+
+```json
+{
+  "crops": ["Wheat", "Rice", "Maize", "Cotton"],
+  "count": 4
+}
+```
+
+---
+
+### `GET /api/seasons`
+
+#### Response `200 OK`
+
+```json
+{
+  "seasons": ["Rabi", "Kharif"],
+  "current_season": "Rabi",
+  "crop_season_mapping": {
+    "Wheat": "Rabi",
+    "Rice": "Kharif",
+    "Maize": "Kharif",
+    "Cotton": "Kharif"
+  },
+  "note": "Season is auto-detected from current date if not provided"
+}
+```
+
+> `current_season` is live: `Rabi` for Oct–Mar, `Kharif` for Apr–Sep.
+
+---
+
+### `GET /api/irrigation-types`
+
+#### Response `200 OK`
+
+```json
+{
+  "irrigation_types": ["Canal", "Borewell", "Rainfed"]
+}
+```
+
+---
+
+### `POST /api/geocode`
+
+Utility to preview district detection and soil defaults for any GPS point.
+
+#### Request (query params)
+
+```
+POST /api/geocode?latitude=30.9010&longitude=75.8573
+```
+
+#### Response `200 OK`
+
+```json
+{
+  "latitude": 30.9010,
+  "longitude": 75.8573,
+  "district": "Ludhiana",
+  "state": "Punjab",
+  "country": "India",
+  "current_season": "Rabi",
+  "district_soil_averages": {
+    "nitrogen": 220,
+    "phosphorus": 21,
+    "potassium": 142,
+    "soil_ph": 7.7,
+    "soil_moisture": 29
+  }
+}
+```
+
+#### Error Responses
+
+```json
+// 503 — Geocoding service unavailable
+{ "detail": "Geocoding service temporarily unavailable" }
+```
+
+---
+
+### `GET /health`
+
+#### Response `200 OK`
+
+```json
+{
+  "status": "healthy",
+  "version": "1.0.0"
+}
+```
+
+---
+
+### `GET /`
+
+#### Response `200 OK`
+
+```json
+{
+  "message": "🌾 KhetBuddy Yield Prediction API",
+  "version": "1.0.0",
+  "status": "running",
+  "docs": "/docs"
+}
+```
+
+---
+
+## 🔬 Auto-Fetch Pipeline
+
+```
+Farmer sends GPS + crop_type + irrigation_type
+           │
+           ▼
+1. Nominatim Reverse Geocoding → district, state
+           │
+           ▼
+2. Season Auto-Detection from calendar month
+   (Rabi: Oct–Mar  |  Kharif: Apr–Sep)
+           │
+           ▼
+3. OpenWeatherMap → temperature, humidity, rainfall
+           │
+           ▼
+4. SoilGrids API → N, pH (GPS-accurate)
+   Punjab District Averages → P, K (fallback)
+   Moisture estimated from weather
+           │
+           ▼
+5. Feature Engineering → nutrient index, stress indicators
+           │
+           ▼
+6. ML Prediction → yield range (lower / expected / higher)
+```
+
+---
+
+## 🛠️ Feature Engineering
+
+| Feature | Formula |
+|---------|---------|
+| **Nutrient Index** | `(N + P + K) / 3` |
+| **Rainfall Category** | Low (<500mm) / Medium (500–1000mm) / High (>1000mm) |
+| **Temperature Deviation** | `avg_temp − crop_mean_temp` |
+| **Stress Indicator** | Low rain + high temperature |
+
+---
 
 ## 🔬 ML Model
 
 ### Current Status
-The API uses **placeholder prediction logic** until a trained model is available. The prediction pipeline is ready to accept:
+The API uses **heuristic-based prediction logic** until a trained model is available.  
+The prediction pipeline is ready to accept:
 - Trained Random Forest model: `models/yield_model.pkl`
-- Encoders: `models/encoders.pkl`
+- Label encoders: `models/encoders.pkl`
 
-### Placeholder Logic
-The current implementation uses heuristic-based estimation considering:
-- Crop-specific base yields
-- Soil nutrient adjustments (NPK index)
-- Weather conditions (rainfall, temperature)
-- Irrigation type factors
-- Stress indicators
+### Yield Range
+- **Lower bound**: `prediction × 0.92`
+- **Expected**: `prediction`
+- **Upper bound**: `prediction × 1.08`
 
-### Yield Range Calculation
-As per `plan_ml_only.md`:
-- **Lower bound**: prediction × 0.92
-- **Expected**: prediction
-- **Upper bound**: prediction × 1.08
+### Adding a Trained Model
+
+```python
+import joblib
+joblib.dump(model, 'models/yield_model.pkl')
+joblib.dump(encoders, 'models/encoders.pkl')
+```
+
+Restart the API — it will automatically detect and use the trained model.
+
+---
 
 ## 📊 Data Sources
 
 All data sources are **free and public**:
 
-| Data Type | Source | Status |
-|-----------|--------|--------|
-| Crop Yield | Govt of India / Kaggle | Offline |
-| Weather (current) | OpenWeatherMap | Online |
-| Weather (historical) | NASA POWER | Offline |
-| Soil (NPK, pH) | Soil Health Card | Offline |
+| Data | Source | How Used |
+|------|--------|----------|
+| Soil N, pH | [SoilGrids (ISRIC)](https://soilgrids.org) | Per-GPS, no API key |
+| Soil P, K | India Soil Health Cards / ICAR | District averages in code |
+| Weather | [OpenWeatherMap](https://openweathermap.org/api) | Real-time by GPS |
+| Geocoding | [Nominatim (OSM)](https://nominatim.org) | Free, no API key |
+| Crop Yield | Govt of India / Kaggle | For model training |
+| Historical Weather | [NASA POWER](https://power.larc.nasa.gov) | For model training |
 
-See [data_sources_plan.md](data_sources_plan.md) for details.
-
-## 🛠️ Feature Engineering
-
-Implemented features from `plan_ml_only.md`:
-
-1. **Nutrient Index**: `(N + P + K) / 3`
-2. **Rainfall Category**: Low (<500mm) / Medium (500-1000mm) / High (>1000mm)
-3. **Temperature Deviation**: `Avg temp - crop mean temp`
-4. **Stress Indicator**: `Low rain + high temp`
-
-## 🌐 Weather Integration
-
-- **Primary API**: OpenWeatherMap (free tier: 60 calls/minute)
-- **Fallback**: Default typical Punjab climate values
-- **Features extracted**: Temperature, rainfall, humidity
+---
 
 ## 📁 Project Structure
 
 ```
 khetBuddy/
 ├── app/
-│   ├── models/           # Pydantic schemas
+│   ├── models/                  # Pydantic request/response schemas
 │   │   ├── prediction.py
 │   │   └── weather.py
-│   ├── routes/           # API endpoints
-│   │   └── prediction.py
-│   ├── services/         # Business logic
-│   │   ├── prediction_service.py
-│   │   └── weather_service.py
-│   ├── utils/            # Utilities
+│   ├── routes/
+│   │   └── prediction.py        # All API endpoints
+│   ├── services/
+│   │   ├── geocoding_service.py # Nominatim reverse geocoding
+│   │   ├── soil_service.py      # SoilGrids + district averages
+│   │   ├── weather_service.py   # OpenWeatherMap integration
+│   │   └── prediction_service.py
+│   ├── utils/
 │   │   ├── feature_engineering.py
 │   │   └── logger.py
-│   ├── config.py         # Settings
-│   └── constants.py      # Static data
-├── models/               # ML models (add trained models here)
-├── main.py               # FastAPI app
+│   ├── config.py                # App settings (pydantic-settings)
+│   └── constants.py             # Crops, seasons, districts, irrigation types
+├── models/                      # ML model files (add trained models here)
+├── main.py                      # FastAPI app entry point
 ├── requirements.txt
 ├── Dockerfile
 ├── docker-compose.yml
+├── render.yaml                  # Render.com deployment config
+├── ROADMAP.md
 └── README.md
 ```
 
-## 🧪 Testing
+---
 
-### Manual Testing
+## ⚙️ Configuration
 
-1. **Health check:**
-   ```bash
-   curl http://localhost:8000/health
-   ```
-
-2. **Get crops:**
-   ```bash
-   curl http://localhost:8000/api/crops
-   ```
-
-3. **Predict yield:**
-   ```bash
-   curl -X POST http://localhost:8000/api/predict \
-     -H "Content-Type: application/json" \
-     -d '{
-       "crop_type": "Wheat",
-       "season": "Rabi",
-       "district": "Ludhiana",
-       "nitrogen": 80,
-       "phosphorus": 40,
-       "potassium": 40,
-       "soil_ph": 7.0,
-       "soil_moisture": 25,
-       "irrigation_type": "Canal"
-     }'
-   ```
-
-## 📝 Adding a Trained Model
-
-1. Train your Random Forest model using the feature engineering pipeline
-2. Save the model:
-   ```python
-   import joblib
-   joblib.dump(model, 'models/yield_model.pkl')
-   joblib.dump(encoders, 'models/encoders.pkl')
-   ```
-3. Restart the API - it will automatically load and use the trained model
-
-## 🔄 API Configuration
-
-Edit `.env` file:
+Edit your `.env` file:
 
 ```env
 # Application
@@ -273,37 +436,100 @@ APP_NAME=KhetBuddy Yield Prediction API
 DEBUG=True
 PORT=8000
 
-# OpenWeatherMap API
+# OpenWeatherMap API (required for live weather)
 OPENWEATHER_API_KEY=your_api_key_here
 
-# CORS
+# CORS origins (comma-separated)
 CORS_ORIGINS=http://localhost:3000,http://localhost:8000
 
-# Model paths
-MODEL_PATH=models/yield_model.pkl
-ENCODERS_PATH=models/encoders.pkl
+# ML model paths
+ML_MODEL_PATH=models/yield_model.pkl
+ML_ENCODERS_PATH=models/encoders.pkl
 ```
 
-## 📖 References
-
-- **Plan Documents**:
-  - [plan_ml_only.md](plan_ml_only.md) - ML system design
-  - [data_sources_plan.md](data_sources_plan.md) - Data sources reference
-
-- **Data Sources**:
-  - [OpenWeatherMap API](https://openweathermap.org/api)
-  - [NASA POWER](https://power.larc.nasa.gov)
-  - [Govt of India Agriculture Statistics](https://agricoop.gov.in/en/statistics)
-
-## 🤝 Contributing
-
-This is an ML-only MVP. Future enhancements outside the ML scope should be planned separately.
-
-## 📄 License
-
-This project uses free and public data sources. See individual data source licenses for details.
+> If `OPENWEATHER_API_KEY` is not set, the API falls back to default Punjab climate values.
 
 ---
 
-**Built with:** FastAPI, scikit-learn, OpenWeatherMap API  
-**For:** Punjab Crop Yield Prediction (ML-Only Scope)
+## 🧪 Testing
+
+### Health Check
+```bash
+curl http://localhost:8000/health
+```
+
+### Minimal Prediction (GPS only)
+```bash
+curl -X POST http://localhost:8000/api/predict \
+  -H "Content-Type: application/json" \
+  -d '{
+    "latitude": 30.9,
+    "longitude": 75.85,
+    "crop_type": "Wheat",
+    "irrigation_type": "Canal"
+  }'
+```
+
+### Reverse Geocode
+```bash
+curl -X POST "http://localhost:8000/api/geocode?latitude=30.9&longitude=75.85"
+```
+
+### List Supported Crops
+```bash
+curl http://localhost:8000/api/crops
+```
+
+---
+
+## 🌐 Deployment
+
+The API is deployable on [Render](https://render.com) (free tier):
+
+```bash
+# Uses render.yaml configuration
+# Set OPENWEATHER_API_KEY in Render dashboard environment variables
+```
+
+See [DEPLOY_RENDER.md](DEPLOY_RENDER.md) for step-by-step instructions.
+
+---
+
+## 🗺️ Roadmap
+
+See [ROADMAP.md](ROADMAP.md) for the full development plan:
+
+- **Phase 1:** Multi-state expansion (Haryana, Maharashtra, UP, Karnataka)
+- **Phase 2:** Train real ML model (Random Forest → XGBoost)
+- **Phase 3:** Crop recommendations, fertilizer optimization, irrigation planning
+- **Phase 4:** Database, authentication, mobile app backend
+
+---
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch: `git checkout -b feature/your-feature`
+3. Make changes and test locally
+4. Submit a pull request
+
+See [ROADMAP.md](ROADMAP.md) for planned features and contribution guidelines.
+
+---
+
+## 📖 References
+
+- [plan_ml_only.md](plan_ml_only.md) — ML system design
+- [data_sources_plan.md](data_sources_plan.md) — Data sources reference
+- [SCALABILITY_PLAN.md](SCALABILITY_PLAN.md) — Scaling architecture
+
+---
+
+## 📄 License
+
+Data used is from free and public sources. See individual source licenses for details.
+
+---
+
+**Built with:** FastAPI · scikit-learn · OpenWeatherMap · SoilGrids · Nominatim  
+**Scope:** Punjab Crop Yield Prediction (v1.0 MVP)
