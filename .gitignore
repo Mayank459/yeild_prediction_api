@@ -25,9 +25,8 @@ venv/
 env/
 ENV/
 
-# Environment variables
+# Environment variables (.env has real secrets - never commit it)
 .env
-.env.example
 
 # IDEs
 .vscode/

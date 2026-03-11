@@ -1,0 +1,12 @@
+{
+    "latitude": 30.9010,
+    "longitude": 75.8573,
+    "crop_type": "Wheat",
+    "season": "Rabi",
+    "nitrogen": 80,
+    "phosphorus": 40,
+    "potassium": 40,
+    "soil_ph": 7.0,
+    "soil_moisture": 25,
+    "irrigation_type": "Canal"
+}
