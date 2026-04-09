@@ -1,0 +1,89 @@
+state,district,crop,season,data_source,nitrogen,phosphorus,potassium,soil_ph,soil_moisture,avg_temperature,total_rainfall,humidity,nutrient_index,rainfall_category,temperature_deviation,stress_indicator,irrigation_type,crop_enc,season_enc,district_enc,irrigation_enc,yield_qtl_ha
+Punjab,Amritsar,Wheat,Rabi,apy.csv (data.gov.in) + ICAR soil/weather averages,210,18,135,7.9,28,16.0,120.0,72.0,121.0,Low,-4.0,0,Canal,3,1,0,1,50.96
+Punjab,Amritsar,Rice,Kharif,apy.csv (data.gov.in) + ICAR soil/weather averages,210,18,135,7.9,28,30.5,530.0,78.0,121.0,Medium,2.5,0,Canal,2,0,0,1,57.08
+Punjab,Amritsar,Maize,Kharif,apy.csv (data.gov.in) + ICAR soil/weather averages,210,18,135,7.9,28,30.5,530.0,78.0,121.0,Medium,4.5,0,Canal,1,0,0,1,42.81
+Punjab,Amritsar,Cotton,Kharif,apy.csv (data.gov.in) + ICAR soil/weather averages,210,18,135,7.9,28,30.5,530.0,78.0,121.0,Medium,0.5,0,Canal,0,0,0,1,24.46
+Punjab,Barnala,Wheat,Rabi,apy.csv (data.gov.in) + ICAR soil/weather averages,195,14,120,8.1,24,16.0,120.0,72.0,109.67,Low,-4.0,0,Canal,3,1,1,1,49.81
+Punjab,Barnala,Rice,Kharif,apy.csv (data.gov.in) + ICAR soil/weather averages,195,14,120,8.1,24,30.5,530.0,78.0,109.67,Medium,2.5,0,Canal,2,0,1,1,55.78
+Punjab,Barnala,Maize,Kharif,apy.csv (data.gov.in) + ICAR soil/weather averages,195,14,120,8.1,24,30.5,530.0,78.0,109.67,Medium,4.5,0,Canal,1,0,1,1,41.84
+Punjab,Barnala,Cotton,Kharif,apy.csv (data.gov.in) + ICAR soil/weather averages,195,14,120,8.1,24,30.5,530.0,78.0,109.67,Medium,0.5,0,Canal,0,0,1,1,23.91
+Punjab,Bathinda,Wheat,Rabi,apy.csv (data.gov.in) + ICAR soil/weather averages,175,12,110,8.3,20,16.0,120.0,72.0,99.0,Low,-4.0,0,Borewell,3,1,2,0,45.37
+Punjab,Bathinda,Rice,Kharif,apy.csv (data.gov.in) + ICAR soil/weather averages,175,12,110,8.3,20,30.5,530.0,78.0,99.0,Medium,2.5,0,Borewell,2,0,2,0,50.2
+Punjab,Bathinda,Maize,Kharif,apy.csv (data.gov.in) + ICAR soil/weather averages,175,12,110,8.3,20,30.5,530.0,78.0,99.0,Medium,4.5,0,Borewell,1,0,2,0,36.68
+Punjab,Bathinda,Cotton,Kharif,apy.csv (data.gov.in) + ICAR soil/weather averages,175,12,110,8.3,20,30.5,530.0,78.0,99.0,Medium,0.5,0,Borewell,0,0,2,0,25.1
+Punjab,Faridkot,Wheat,Rabi,apy.csv (data.gov.in) + ICAR soil/weather averages,180,13,115,8.2,22,16.0,120.0,72.0,102.67,Low,-4.0,0,Borewell,3,1,3,0,45.73
+Punjab,Faridkot,Rice,Kharif,apy.csv (data.gov.in) + ICAR soil/weather averages,180,13,115,8.2,22,30.5,530.0,78.0,102.67,Medium,2.5,0,Borewell,2,0,3,0,50.6
+Punjab,Faridkot,Maize,Kharif,apy.csv (data.gov.in) + ICAR soil/weather averages,180,13,115,8.2,22,30.5,530.0,78.0,102.67,Medium,4.5,0,Borewell,1,0,3,0,36.98
+Punjab,Faridkot,Cotton,Kharif,apy.csv (data.gov.in) + ICAR soil/weather averages,180,13,115,8.2,22,30.5,530.0,78.0,102.67,Medium,0.5,0,Borewell,0,0,3,0,25.3
+Punjab,Fatehgarh Sahib,Wheat,Rabi,apy.csv (data.gov.in) + ICAR soil/weather averages,220,20,140,7.8,30,16.0,120.0,72.0,126.67,Low,-4.0,0,Canal,3,1,4,1,51.73
+Punjab,Fatehgarh Sahib,Rice,Kharif,apy.csv (data.gov.in) + ICAR soil/weather averages,220,20,140,7.8,30,30.5,530.0,78.0,126.67,Medium,2.5,0,Canal,2,0,4,1,57.94
+Punjab,Fatehgarh Sahib,Maize,Kharif,apy.csv (data.gov.in) + ICAR soil/weather averages,220,20,140,7.8,30,30.5,530.0,78.0,126.67,Medium,4.5,0,Canal,1,0,4,1,43.45
+Punjab,Fatehgarh Sahib,Cotton,Kharif,apy.csv (data.gov.in) + ICAR soil/weather averages,220,20,140,7.8,30,30.5,530.0,78.0,126.67,Medium,0.5,0,Canal,0,0,4,1,24.83
+Punjab,Fazilka,Wheat,Rabi,apy.csv (data.gov.in) + ICAR soil/weather averages,165,11,105,8.4,18,16.0,120.0,72.0,93.67,Low,-4.0,0,Borewell,3,1,5,0,44.65
+Punjab,Fazilka,Rice,Kharif,apy.csv (data.gov.in) + ICAR soil/weather averages,165,11,105,8.4,18,30.5,530.0,78.0,93.67,Medium,2.5,0,Borewell,2,0,5,0,49.4
+Punjab,Fazilka,Maize,Kharif,apy.csv (data.gov.in) + ICAR soil/weather averages,165,11,105,8.4,18,30.5,530.0,78.0,93.67,Medium,4.5,0,Borewell,1,0,5,0,36.1
+Punjab,Fazilka,Cotton,Kharif,apy.csv (data.gov.in) + ICAR soil/weather averages,165,11,105,8.4,18,30.5,530.0,78.0,93.67,Medium,0.5,0,Borewell,0,0,5,0,24.7
+Punjab,Ferozepur,Wheat,Rabi,apy.csv (data.gov.in) + ICAR soil/weather averages,185,14,120,8.1,22,16.0,120.0,72.0,106.33,Low,-4.0,0,Canal,3,1,6,1,49.04
+Punjab,Ferozepur,Rice,Kharif,apy.csv (data.gov.in) + ICAR soil/weather averages,185,14,120,8.1,22,30.5,530.0,78.0,106.33,Medium,2.5,0,Canal,2,0,6,1,54.92
+Punjab,Ferozepur,Maize,Kharif,apy.csv (data.gov.in) + ICAR soil/weather averages,185,14,120,8.1,22,30.5,530.0,78.0,106.33,Medium,4.5,0,Canal,1,0,6,1,41.19
+Punjab,Ferozepur,Cotton,Kharif,apy.csv (data.gov.in) + ICAR soil/weather averages,185,14,120,8.1,22,30.5,530.0,78.0,106.33,Medium,0.5,0,Canal,0,0,6,1,23.54
+Punjab,Gurdaspur,Wheat,Rabi,apy.csv (data.gov.in) + ICAR soil/weather averages,225,22,150,7.5,32,16.0,120.0,72.0,132.33,Low,-4.0,0,Rainfed,3,1,7,2,39.61
+Punjab,Gurdaspur,Rice,Kharif,apy.csv (data.gov.in) + ICAR soil/weather averages,225,22,150,7.5,32,30.5,530.0,78.0,132.33,Medium,2.5,0,Rainfed,2,0,7,2,45.86
+Punjab,Gurdaspur,Maize,Kharif,apy.csv (data.gov.in) + ICAR soil/weather averages,225,22,150,7.5,32,30.5,530.0,78.0,132.33,Medium,4.5,0,Rainfed,1,0,7,2,31.27
+Punjab,Gurdaspur,Cotton,Kharif,apy.csv (data.gov.in) + ICAR soil/weather averages,225,22,150,7.5,32,30.5,530.0,78.0,132.33,Medium,0.5,0,Rainfed,0,0,7,2,18.76
+Punjab,Hoshiarpur,Wheat,Rabi,apy.csv (data.gov.in) + ICAR soil/weather averages,230,24,155,7.3,35,16.0,120.0,72.0,136.33,Low,-4.0,0,Rainfed,3,1,8,2,39.9
+Punjab,Hoshiarpur,Rice,Kharif,apy.csv (data.gov.in) + ICAR soil/weather averages,230,24,155,7.3,35,30.5,530.0,78.0,136.33,Medium,2.5,0,Rainfed,2,0,8,2,46.2
+Punjab,Hoshiarpur,Maize,Kharif,apy.csv (data.gov.in) + ICAR soil/weather averages,230,24,155,7.3,35,30.5,530.0,78.0,136.33,Medium,4.5,0,Rainfed,1,0,8,2,31.5
+Punjab,Hoshiarpur,Cotton,Kharif,apy.csv (data.gov.in) + ICAR soil/weather averages,230,24,155,7.3,35,30.5,530.0,78.0,136.33,Medium,0.5,0,Rainfed,0,0,8,2,18.9
+Punjab,Jalandhar,Wheat,Rabi,apy.csv (data.gov.in) + ICAR soil/weather averages,215,19,138,7.8,28,16.0,120.0,72.0,124.0,Low,-4.0,0,Canal,3,1,9,1,51.35
+Punjab,Jalandhar,Rice,Kharif,apy.csv (data.gov.in) + ICAR soil/weather averages,215,19,138,7.8,28,30.5,530.0,78.0,124.0,Medium,2.5,0,Canal,2,0,9,1,57.51
+Punjab,Jalandhar,Maize,Kharif,apy.csv (data.gov.in) + ICAR soil/weather averages,215,19,138,7.8,28,30.5,530.0,78.0,124.0,Medium,4.5,0,Canal,1,0,9,1,43.13
+Punjab,Jalandhar,Cotton,Kharif,apy.csv (data.gov.in) + ICAR soil/weather averages,215,19,138,7.8,28,30.5,530.0,78.0,124.0,Medium,0.5,0,Canal,0,0,9,1,24.65
+Punjab,Kapurthala,Wheat,Rabi,apy.csv (data.gov.in) + ICAR soil/weather averages,210,18,135,7.9,27,16.0,120.0,72.0,121.0,Low,-4.0,0,Canal,3,1,10,1,50.96
+Punjab,Kapurthala,Rice,Kharif,apy.csv (data.gov.in) + ICAR soil/weather averages,210,18,135,7.9,27,30.5,530.0,78.0,121.0,Medium,2.5,0,Canal,2,0,10,1,57.08
+Punjab,Kapurthala,Maize,Kharif,apy.csv (data.gov.in) + ICAR soil/weather averages,210,18,135,7.9,27,30.5,530.0,78.0,121.0,Medium,4.5,0,Canal,1,0,10,1,42.81
+Punjab,Kapurthala,Cotton,Kharif,apy.csv (data.gov.in) + ICAR soil/weather averages,210,18,135,7.9,27,30.5,530.0,78.0,121.0,Medium,0.5,0,Canal,0,0,10,1,24.46
+Punjab,Ludhiana,Wheat,Rabi,apy.csv (data.gov.in) + ICAR soil/weather averages,220,21,142,7.7,29,16.0,120.0,72.0,127.67,Low,-4.0,0,Canal,3,1,11,1,51.73
+Punjab,Ludhiana,Rice,Kharif,apy.csv (data.gov.in) + ICAR soil/weather averages,220,21,142,7.7,29,30.5,530.0,78.0,127.67,Medium,2.5,0,Canal,2,0,11,1,57.94
+Punjab,Ludhiana,Maize,Kharif,apy.csv (data.gov.in) + ICAR soil/weather averages,220,21,142,7.7,29,30.5,530.0,78.0,127.67,Medium,4.5,0,Canal,1,0,11,1,43.45
+Punjab,Ludhiana,Cotton,Kharif,apy.csv (data.gov.in) + ICAR soil/weather averages,220,21,142,7.7,29,30.5,530.0,78.0,127.67,Medium,0.5,0,Canal,0,0,11,1,24.83
+Punjab,Mansa,Wheat,Rabi,apy.csv (data.gov.in) + ICAR soil/weather averages,170,11,108,8.3,20,16.0,120.0,72.0,96.33,Low,-4.0,0,Borewell,3,1,12,0,45.01
+Punjab,Mansa,Rice,Kharif,apy.csv (data.gov.in) + ICAR soil/weather averages,170,11,108,8.3,20,30.5,530.0,78.0,96.33,Medium,2.5,0,Borewell,2,0,12,0,49.8
+Punjab,Mansa,Maize,Kharif,apy.csv (data.gov.in) + ICAR soil/weather averages,170,11,108,8.3,20,30.5,530.0,78.0,96.33,Medium,4.5,0,Borewell,1,0,12,0,36.39
+Punjab,Mansa,Cotton,Kharif,apy.csv (data.gov.in) + ICAR soil/weather averages,170,11,108,8.3,20,30.5,530.0,78.0,96.33,Medium,0.5,0,Borewell,0,0,12,0,24.9
+Punjab,Moga,Wheat,Rabi,apy.csv (data.gov.in) + ICAR soil/weather averages,200,16,128,8.0,25,16.0,120.0,72.0,114.67,Low,-4.0,0,Canal,3,1,13,1,50.19
+Punjab,Moga,Rice,Kharif,apy.csv (data.gov.in) + ICAR soil/weather averages,200,16,128,8.0,25,30.5,530.0,78.0,114.67,Medium,2.5,0,Canal,2,0,13,1,56.22
+Punjab,Moga,Maize,Kharif,apy.csv (data.gov.in) + ICAR soil/weather averages,200,16,128,8.0,25,30.5,530.0,78.0,114.67,Medium,4.5,0,Canal,1,0,13,1,42.16
+Punjab,Moga,Cotton,Kharif,apy.csv (data.gov.in) + ICAR soil/weather averages,200,16,128,8.0,25,30.5,530.0,78.0,114.67,Medium,0.5,0,Canal,0,0,13,1,24.09
+Punjab,Muktsar,Wheat,Rabi,apy.csv (data.gov.in) + ICAR soil/weather averages,168,11,106,8.4,19,16.0,120.0,72.0,95.0,Low,-4.0,0,Borewell,3,1,14,0,44.87
+Punjab,Muktsar,Rice,Kharif,apy.csv (data.gov.in) + ICAR soil/weather averages,168,11,106,8.4,19,30.5,530.0,78.0,95.0,Medium,2.5,0,Borewell,2,0,14,0,49.64
+Punjab,Muktsar,Maize,Kharif,apy.csv (data.gov.in) + ICAR soil/weather averages,168,11,106,8.4,19,30.5,530.0,78.0,95.0,Medium,4.5,0,Borewell,1,0,14,0,36.28
+Punjab,Muktsar,Cotton,Kharif,apy.csv (data.gov.in) + ICAR soil/weather averages,168,11,106,8.4,19,30.5,530.0,78.0,95.0,Medium,0.5,0,Borewell,0,0,14,0,24.82
+Punjab,Nawanshahr,Wheat,Rabi,apy.csv (data.gov.in) + ICAR soil/weather averages,225,22,148,7.6,33,16.0,120.0,72.0,131.67,Low,-4.0,0,Canal,3,1,15,1,52.12
+Punjab,Nawanshahr,Rice,Kharif,apy.csv (data.gov.in) + ICAR soil/weather averages,225,22,148,7.6,33,30.5,530.0,78.0,131.67,Medium,2.5,0,Canal,2,0,15,1,58.37
+Punjab,Nawanshahr,Maize,Kharif,apy.csv (data.gov.in) + ICAR soil/weather averages,225,22,148,7.6,33,30.5,530.0,78.0,131.67,Medium,4.5,0,Canal,1,0,15,1,43.78
+Punjab,Nawanshahr,Cotton,Kharif,apy.csv (data.gov.in) + ICAR soil/weather averages,225,22,148,7.6,33,30.5,530.0,78.0,131.67,Medium,0.5,0,Canal,0,0,15,1,25.02
+Punjab,Pathankot,Wheat,Rabi,apy.csv (data.gov.in) + ICAR soil/weather averages,228,23,152,7.4,34,16.0,120.0,72.0,134.33,Low,-4.0,0,Rainfed,3,1,16,2,39.78
+Punjab,Pathankot,Rice,Kharif,apy.csv (data.gov.in) + ICAR soil/weather averages,228,23,152,7.4,34,30.5,530.0,78.0,134.33,Medium,2.5,0,Rainfed,2,0,16,2,46.06
+Punjab,Pathankot,Maize,Kharif,apy.csv (data.gov.in) + ICAR soil/weather averages,228,23,152,7.4,34,30.5,530.0,78.0,134.33,Medium,4.5,0,Rainfed,1,0,16,2,31.41
+Punjab,Pathankot,Cotton,Kharif,apy.csv (data.gov.in) + ICAR soil/weather averages,228,23,152,7.4,34,30.5,530.0,78.0,134.33,Medium,0.5,0,Rainfed,0,0,16,2,18.84
+Punjab,Patiala,Wheat,Rabi,apy.csv (data.gov.in) + ICAR soil/weather averages,205,17,130,7.9,26,16.0,120.0,72.0,117.33,Low,-4.0,0,Canal,3,1,17,1,50.58
+Punjab,Patiala,Rice,Kharif,apy.csv (data.gov.in) + ICAR soil/weather averages,205,17,130,7.9,26,30.5,530.0,78.0,117.33,Medium,2.5,0,Canal,2,0,17,1,56.65
+Punjab,Patiala,Maize,Kharif,apy.csv (data.gov.in) + ICAR soil/weather averages,205,17,130,7.9,26,30.5,530.0,78.0,117.33,Medium,4.5,0,Canal,1,0,17,1,42.48
+Punjab,Patiala,Cotton,Kharif,apy.csv (data.gov.in) + ICAR soil/weather averages,205,17,130,7.9,26,30.5,530.0,78.0,117.33,Medium,0.5,0,Canal,0,0,17,1,24.28
+Punjab,Rupnagar,Wheat,Rabi,apy.csv (data.gov.in) + ICAR soil/weather averages,222,21,145,7.6,31,16.0,120.0,72.0,129.33,Low,-4.0,0,Canal,3,1,18,1,51.88
+Punjab,Rupnagar,Rice,Kharif,apy.csv (data.gov.in) + ICAR soil/weather averages,222,21,145,7.6,31,30.5,530.0,78.0,129.33,Medium,2.5,0,Canal,2,0,18,1,58.11
+Punjab,Rupnagar,Maize,Kharif,apy.csv (data.gov.in) + ICAR soil/weather averages,222,21,145,7.6,31,30.5,530.0,78.0,129.33,Medium,4.5,0,Canal,1,0,18,1,43.58
+Punjab,Rupnagar,Cotton,Kharif,apy.csv (data.gov.in) + ICAR soil/weather averages,222,21,145,7.6,31,30.5,530.0,78.0,129.33,Medium,0.5,0,Canal,0,0,18,1,24.9
+Punjab,Sangrur,Wheat,Rabi,apy.csv (data.gov.in) + ICAR soil/weather averages,190,15,122,8.1,23,16.0,120.0,72.0,109.0,Low,-4.0,0,Canal,3,1,20,1,49.42
+Punjab,Sangrur,Rice,Kharif,apy.csv (data.gov.in) + ICAR soil/weather averages,190,15,122,8.1,23,30.5,530.0,78.0,109.0,Medium,2.5,0,Canal,2,0,20,1,55.35
+Punjab,Sangrur,Maize,Kharif,apy.csv (data.gov.in) + ICAR soil/weather averages,190,15,122,8.1,23,30.5,530.0,78.0,109.0,Medium,4.5,0,Canal,1,0,20,1,41.52
+Punjab,Sangrur,Cotton,Kharif,apy.csv (data.gov.in) + ICAR soil/weather averages,190,15,122,8.1,23,30.5,530.0,78.0,109.0,Medium,0.5,0,Canal,0,0,20,1,23.72
+Punjab,SAS Nagar,Wheat,Rabi,apy.csv (data.gov.in) + ICAR soil/weather averages,215,19,138,7.8,28,16.0,120.0,72.0,124.0,Low,-4.0,0,Canal,3,1,19,1,51.35
+Punjab,SAS Nagar,Rice,Kharif,apy.csv (data.gov.in) + ICAR soil/weather averages,215,19,138,7.8,28,30.5,530.0,78.0,124.0,Medium,2.5,0,Canal,2,0,19,1,57.51
+Punjab,SAS Nagar,Maize,Kharif,apy.csv (data.gov.in) + ICAR soil/weather averages,215,19,138,7.8,28,30.5,530.0,78.0,124.0,Medium,4.5,0,Canal,1,0,19,1,43.13
+Punjab,SAS Nagar,Cotton,Kharif,apy.csv (data.gov.in) + ICAR soil/weather averages,215,19,138,7.8,28,30.5,530.0,78.0,124.0,Medium,0.5,0,Canal,0,0,19,1,24.65
+Punjab,Tarn Taran,Wheat,Rabi,apy.csv (data.gov.in) + ICAR soil/weather averages,208,17,133,7.9,27,16.0,120.0,72.0,119.33,Low,-4.0,0,Canal,3,1,21,1,50.81
+Punjab,Tarn Taran,Rice,Kharif,apy.csv (data.gov.in) + ICAR soil/weather averages,208,17,133,7.9,27,30.5,530.0,78.0,119.33,Medium,2.5,0,Canal,2,0,21,1,56.9
+Punjab,Tarn Taran,Maize,Kharif,apy.csv (data.gov.in) + ICAR soil/weather averages,208,17,133,7.9,27,30.5,530.0,78.0,119.33,Medium,4.5,0,Canal,1,0,21,1,42.68
+Punjab,Tarn Taran,Cotton,Kharif,apy.csv (data.gov.in) + ICAR soil/weather averages,208,17,133,7.9,27,30.5,530.0,78.0,119.33,Medium,0.5,0,Canal,0,0,21,1,24.39

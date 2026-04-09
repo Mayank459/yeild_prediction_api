@@ -1,7 +1,7 @@
 """
 Geocoding Service - Nominatim (OpenStreetMap) Reverse Geocoding
 Free, no API key required. Rate limit: 1 request/second.
-Converts GPS coordinates (lat, lon) → state + district automatically.
+Converts GPS coordinates (lat, lon) -> state + district automatically.
 Works for ALL of India — no hardcoded district data needed.
 """
 
@@ -13,7 +13,7 @@ from app.utils.logger import logger
 class GeocodingService:
     """
     Reverse geocoding using Nominatim (OpenStreetMap).
-    Converts GPS lat/lon → district + state for any location in India.
+    Converts GPS lat/lon -> district + state for any location in India.
     """
 
     NOMINATIM_URL = "https://nominatim.openstreetmap.org/reverse"
@@ -79,7 +79,7 @@ class GeocodingService:
                 "raw_address": address
             }
 
-            logger.info(f"Reverse geocoded ({lat}, {lon}) → {district}, {state}")
+            logger.info(f"Reverse geocoded ({lat}, {lon}) -> {district}, {state}")
             return result
 
         except httpx.HTTPError as e:

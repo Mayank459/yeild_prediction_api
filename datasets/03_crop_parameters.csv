@@ -1,0 +1,5 @@
+crop,season,mean_optimal_temperature_celsius,irrigation_type_inference_rule,base_yield_qtl_ha,yield_min_clip_qtl_ha,yield_max_clip_qtl_ha,source
+Wheat,Rabi,20,Canal (default) / Borewell (south-west districts) / Rainfed (hilly districts),50.0,5.0,150.0,ICAR crop physiology benchmarks + Punjab agricultural statistics
+Rice,Kharif,28,Canal (default) / Borewell (south-west districts) / Rainfed (hilly districts),55.0,5.0,150.0,ICAR crop physiology benchmarks + Punjab agricultural statistics
+Maize,Kharif,26,Canal (default) / Borewell (south-west districts) / Rainfed (hilly districts),45.0,5.0,150.0,ICAR crop physiology benchmarks + Punjab agricultural statistics
+Cotton,Kharif,30,Canal (default) / Borewell (south-west districts) / Rainfed (hilly districts),25.0,5.0,150.0,ICAR crop physiology benchmarks + Punjab agricultural statistics

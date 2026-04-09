@@ -1,0 +1,10 @@
+district,irrigation_type_inferred,reason
+Bathinda,Borewell,Sandy loam arid zone — heavy groundwater extraction historically
+Fazilka,Borewell,Sandy arid south-west Punjab — dependent on tube wells
+Mansa,Borewell,Low canal connectivity — primarily groundwater irrigation
+Muktsar,Borewell,Desert fringe district — borewell dominant
+Faridkot,Borewell,Limited surface water access — tube well dependent
+Hoshiarpur,Rainfed,Sub-Himalayan foothills — higher natural rainfall
+Pathankot,Rainfed,Himachal border hills — significant rain shadow effect
+Gurdaspur,Rainfed,Hilly terrain with good rainfall — less canal dependency
+All other Punjab districts,Canal,Well-connected to Bhakra / other Punjab canal network

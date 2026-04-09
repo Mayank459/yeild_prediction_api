@@ -1,0 +1,24 @@
+district,nitrogen_kg_ha,phosphorus_kg_ha,potassium_kg_ha,soil_ph,soil_moisture_pct,source
+Amritsar,210,18,135,7.9,28,India Soil Health Card / ICAR Punjab averages
+Barnala,195,14,120,8.1,24,India Soil Health Card / ICAR Punjab averages
+Bathinda,175,12,110,8.3,20,India Soil Health Card / ICAR Punjab averages
+Faridkot,180,13,115,8.2,22,India Soil Health Card / ICAR Punjab averages
+Fatehgarh Sahib,220,20,140,7.8,30,India Soil Health Card / ICAR Punjab averages
+Fazilka,165,11,105,8.4,18,India Soil Health Card / ICAR Punjab averages
+Ferozepur,185,14,120,8.1,22,India Soil Health Card / ICAR Punjab averages
+Gurdaspur,225,22,150,7.5,32,India Soil Health Card / ICAR Punjab averages
+Hoshiarpur,230,24,155,7.3,35,India Soil Health Card / ICAR Punjab averages
+Jalandhar,215,19,138,7.8,28,India Soil Health Card / ICAR Punjab averages
+Kapurthala,210,18,135,7.9,27,India Soil Health Card / ICAR Punjab averages
+Ludhiana,220,21,142,7.7,29,India Soil Health Card / ICAR Punjab averages
+Mansa,170,11,108,8.3,20,India Soil Health Card / ICAR Punjab averages
+Moga,200,16,128,8.0,25,India Soil Health Card / ICAR Punjab averages
+Muktsar,168,11,106,8.4,19,India Soil Health Card / ICAR Punjab averages
+Nawanshahr,225,22,148,7.6,33,India Soil Health Card / ICAR Punjab averages
+Pathankot,228,23,152,7.4,34,India Soil Health Card / ICAR Punjab averages
+Patiala,205,17,130,7.9,26,India Soil Health Card / ICAR Punjab averages
+Rupnagar,222,21,145,7.6,31,India Soil Health Card / ICAR Punjab averages
+Sangrur,190,15,122,8.1,23,India Soil Health Card / ICAR Punjab averages
+SAS Nagar (Mohali),215,19,138,7.8,28,India Soil Health Card / ICAR Punjab averages
+Tarn Taran,208,17,133,7.9,27,India Soil Health Card / ICAR Punjab averages
+PUNJAB_DEFAULT (fallback),205,17,130,7.9,26,Punjab state-wide average fallback

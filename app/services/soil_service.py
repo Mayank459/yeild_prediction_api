@@ -69,9 +69,9 @@ class SoilService:
         """
         Get soil parameters for a GPS location.
         Priority:
-          1. SoilGrids API  → N, pH (most accurate for specific GPS point)
-          2. Punjab district averages → P, K (district-level data)
-          3. Punjab state default → if district not recognized
+          1. SoilGrids API  -> N, pH (most accurate for specific GPS point)
+          2. Punjab district averages -> P, K (district-level data)
+          3. Punjab state default -> if district not recognized
 
         Args:
             lat: GPS latitude

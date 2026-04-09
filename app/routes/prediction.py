@@ -1,7 +1,7 @@
 """
 API Routes - Prediction Endpoints
 Full auto-fetch pipeline:
-  GPS → district/state → soil data → weather → season → predict
+  GPS -> district/state -> soil data -> weather -> season -> predict
 Farmer only needs: GPS + crop_type + irrigation_type
 """
 
@@ -55,7 +55,7 @@ async def predict_yield(request: PredictionRequest):
         )
 
     try:
-        # ── Step 1: Reverse geocode GPS → district + state ───────────────────
+        # ── Step 1: Reverse geocode GPS -> district + state ───────────────────
         logger.info(f"Reverse geocoding ({request.latitude}, {request.longitude})")
         geo_result = await geocoding_service.reverse_geocode(request.latitude, request.longitude)
 
@@ -79,7 +79,8 @@ async def predict_yield(request: PredictionRequest):
         )
 
         # ── Step 2: Auto-detect season from date (override if user provided) ─
-        season = request.season or soil_service.get_season_from_date()
+        auto_detected_season = soil_service.get_season_from_date()
+        season = request.season or auto_detected_season
 
         # Validate season if user explicitly provided it
         if request.season and request.season not in SEASONS:
@@ -88,13 +89,22 @@ async def predict_yield(request: PredictionRequest):
                 detail=f"Invalid season. Choose from: {', '.join(SEASONS)}"
             )
 
-        # Warn on unusual crop-season combination
+        # Correct season to match crop's canonical season
         expected_season = CROP_SEASON_MAP.get(request.crop_type)
         if expected_season and season != expected_season:
-            logger.warning(
-                f"Unusual crop-season: {request.crop_type} in {season} "
-                f"(typical: {expected_season})"
-            )
+            if not request.season:
+                # Season was auto-detected: silently correct it to match the crop
+                logger.info(
+                    f"Auto-correcting season for {request.crop_type}: "
+                    f"{season} -> {expected_season} (crop-canonical season)"
+                )
+                season = expected_season
+            else:
+                # User explicitly provided a non-canonical season: warn but respect it
+                logger.warning(
+                    f"User-provided season '{season}' is unusual for {request.crop_type} "
+                    f"(typical: {expected_season}). Proceeding with user input."
+                )
 
         # ── Step 3: Fetch weather via GPS ────────────────────────────────────
         weather_auto = (
@@ -228,7 +238,7 @@ async def get_irrigation_types():
 @router.post("/geocode", status_code=status.HTTP_200_OK)
 async def reverse_geocode(latitude: float, longitude: float):
     """
-    Utility: Reverse geocode GPS → district + state.
+    Utility: Reverse geocode GPS -> district + state.
     Also returns current auto-detected season and district soil averages.
     """
     result = await geocoding_service.reverse_geocode(latitude, longitude)
