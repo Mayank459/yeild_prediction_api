@@ -22,6 +22,13 @@ class Settings(BaseSettings):
     # Model paths (use custom prefix to avoid protected namespace warning)
     ml_model_path: str = "models/yield_model.pkl"
     ml_encoders_path: str = "models/encoders.pkl"
+
+    # Deep Learning model paths
+    dl_model_path: str = "models/dl_yield_model.pt"
+    dl_scaler_path: str = "models/dl_scaler.pkl"
+
+    # Model type: "rf" | "dl" | "ensemble"
+    model_type: str = "dl"
     
     @field_validator('cors_origins', mode='before')
     @classmethod
